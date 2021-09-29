@@ -1,0 +1,77 @@
+title: "Rraining pipeline for NER in classical arabic"
+description: "TODO"
+
+# Variables can be referenced across the project.yml using ${vars.var_name}
+vars:
+  base_config: "base_config"
+  lang: "TODO"
+  package_name: "TODO"
+  package_version: "0.0.0"
+  gpu: -1
+
+# These are the directories that the project needs. The project CLI will make
+# sure that they always exist.
+directories: ["assets", "corpus", "training", "metrics", "configs", "packages"]
+
+assets:
+  - dest: "assets/TODO"
+    git:
+      repo: "https://github.com/New-Languages-for-NLP/classical-arabic/"
+      branch: "project-testing"
+      path: "3_inception_export/TODO"
+
+workflows:
+  all:
+    - convert
+    - install
+    - train
+    - evaluate
+
+commands:
+  - name: install
+    help: "Install classical arabic language model from file as package with entry point"
+    script: 
+      - "pip install -e lang/TODO"
+    deps:
+      - "lang/TODO"
+
+  - name: convert
+    help: "Convert the data to spaCy's format"
+    # Make sure we specify the branch in the command string, so that the
+    # caching works correctly.
+    script:
+      # TODO - "mkdir -p corpus/TODO"
+      # TODO - "python -m spacy convert assets/TODO/${vars.train_name}.conllu corpus/TODO/ --converter conllu --n-sents 10 --merge-subtokens"
+      # TODO - "mv corpus/TODO/${vars.train_name}.spacy corpus/TODO/train.spacy"
+    deps:
+      # TODO - "assets/${vars.treebank}/${vars.train_name}.conllu"
+    outputs:
+      # TODO - "corpus/${vars.treebank}/train.spacy"
+
+  - name: train
+    help: "Train TODO"
+    script:
+      - "spacy init fill-config configs/${vars.base_config}.cfg configs/config.cfg"
+      - "spacy train configs/config.cfg --output training"
+    deps:
+      - "corpus/TODO/train.spacy"
+      - "configs/${vars.base_config}.cfg"
+    outputs:
+      - "training/TODO/model-best"
+
+  - name: evaluate
+    help: "Evaluate on the test data and save the metrics"
+    script:
+      # TODO - "python -m spacy evaluate ./training/model-best ./corpus/${vars.treebank}/test.spacy --output ./metrics/TODO.json --gpu-id ${vars.gpu}"
+    deps:
+      - "training/model-best"
+      - "corpus/TODO/test.spacy"
+    outputs:
+      - "metrics/TODO.json"
+
+  - name: clean
+    help: "Remove intermediate files"
+    script:
+      - "rm -rf training/*"
+      - "rm -rf metrics/*"
+      - "rm -rf corpus/*"
