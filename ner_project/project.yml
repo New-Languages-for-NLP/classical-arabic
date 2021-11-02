@@ -4,74 +4,83 @@ description: "TODO"
 # Variables can be referenced across the project.yml using ${vars.var_name}
 vars:
   base_config: "base_config"
-  lang: "TODO"
-  package_name: "TODO"
+  lang: "classical arabic"
+  package_name: "clara"
   package_version: "0.0.0"
   gpu: -1
 
 # These are the directories that the project needs. The project CLI will make
 # sure that they always exist.
-directories: ["assets", "corpus", "training", "metrics", "configs", "packages"]
+directories: ["assets", "corpus", "training", "configs"]
 
 assets:
   - dest: "assets/3_inception_export"
     git:
       repo: "https://github.com/New-Languages-for-NLP/classical-arabic/"
       branch: "project-testing"
-      path: "3_inception_export/clara_project_2021-11-02_1131.zip"
+      path: "3_inception_export"
 
 workflows:
   all:
-    - convert
     - install
+    - convert
+    - init-config
+    - split-train-test
     - train
-    - evaluate
 
 commands:
   - name: install
     help: "Install classical arabic language model from file as package with entry point"
-    script: 
-      - "pip install -e lang/TODO"
+    script:
+      - "rm -rf lang"
+      - "mkdir lang"
+      - "mkdir lang/clara"
+      - "cp -r ../2_new_language_object/classical_arabic lang/clara" 
+      - "mv lang/clara/classical_arabic lang/clara/clara"
+      - "mv lang/clara/clara/setup.py lang/clara/"
+      - "pip install -e lang/clara"
     deps:
-      - "lang/TODO"
+      - "../2_new_language_object/classical_arabic"
 
   - name: convert
     help: "Convert the data to spaCy's format"
     # Make sure we specify the branch in the command string, so that the
     # caching works correctly.
     script:
-      - "mkdir -p corpus/"
-      # TODO - "python -m spacy convert assets/TODO/${vars.train_name}.conllu corpus/TODO/ --converter conllu --n-sents 10 --merge-subtokens"
-      # TODO - "mv corpus/TODO/${vars.train_name}.spacy corpus/TODO/train.spacy"
+      - "mkdir -p corpus/ "
+      - "unzip assets/3_inception_export/clara_project_2021-11-02_1131.zip -d corpus"
+      - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL1/maroussia.bednarkiewicz.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL1/ --converter conll --n-sents 10 --merge-subtokens"
+      - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL2/ik337.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL2/ --converter conll --n-sents 10 --merge-subtokens"
+      - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL3/maroussia.bednarkiewicz.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL3/ --converter conll --n-sents 10 --merge-subtokens"
+      - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-MUB-CL-NER.conllu/ik337.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-MUB-CL-NER.conllu/ --converter conll --n-sents 10 --merge-subtokens"
+      
     deps:
       - "assets/3_inception_export/clara_project_2021-11-02_1131.zip"
     outputs:
       - "corpus/clara/train.spacy"
 
+
+  - name: split-train-test
+    help : "split files into training and test split"
+    script:
+      - "python scripts/split_train_test.py \
+        -i corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL1/maroussia.bednarkiewicz.spacy \
+        -i corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL2/ik337.spacy \
+        -i corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL3/maroussia.bednarkiewicz.spacy \
+        -i corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-MUB-CL-NER.conllu/ik337.spacy"
+
+  - name: init-config
+    help: "create an initial config file for training."
+    script:
+      - "spacy init config --lang clara --pipeline ner configs/config.cfg --force"
+
   - name: train
     help: "Train TODO"
     script:
-      - "spacy init fill-config configs/${vars.base_config}.cfg configs/config.cfg"
-      - "spacy train configs/config.cfg --output training"
+      - "python -m spacy train configs/config.cfg --paths.train corpus/train.spacy --paths.dev corpus/test.spacy"
     deps:
-      - "corpus/TODO/train.spacy"
-      - "configs/${vars.base_config}.cfg"
+      - "corpus/train.spacy"
+      - "corpus/test.spacy"
+      - "configs/config.cfg"
     outputs:
       - "training/TODO/model-best"
-
-  - name: evaluate
-    help: "Evaluate on the test data and save the metrics"
-    script:
-      - "python -m spacy evaluate ./training/model-best ./corpus/clara/test.spacy --output ./metrics/TODO.json --gpu-id ${vars.gpu}"
-    deps:
-      - "training/model-best"
-      - "corpus/TODO/test.spacy"
-    outputs:
-      - "metrics/TODO.json"
-
-  - name: clean
-    help: "Remove intermediate files"
-    script:
-      - "rm -rf training/*"
-      - "rm -rf metrics/*"
-      - "rm -rf corpus/*"
