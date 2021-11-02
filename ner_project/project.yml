@@ -1,77 +1,69 @@
-title: "Rraining pipeline for NER in classical arabic"
-description: "TODO"
-
-# Variables can be referenced across the project.yml using ${vars.var_name}
+title: Rraining pipeline for NER in classical arabic
+description: TODO
 vars:
-  base_config: "base_config"
-  lang: "TODO"
-  package_name: "TODO"
-  package_version: "0.0.0"
+  base_config: base_config
+  lang: TODO
+  package_name: TODO
+  package_version: 0.0.0
   gpu: -1
-
-# These are the directories that the project needs. The project CLI will make
-# sure that they always exist.
-directories: ["assets", "corpus", "training", "metrics", "configs", "packages"]
-
+directories:
+  - assets
+  - corpus
+  - training
+  - metrics
+  - configs
+  - packages
 assets:
-  - dest: "assets/3_inception_export"
+  - dest: assets/3_inception_export
     git:
-      repo: "https://github.com/New-Languages-for-NLP/classical-arabic/"
-      branch: "project-testing"
-      path: "3_inception_export/clara_project_2021-11-02_1131.zip"
-
+      repo: https://github.com/New-Languages-for-NLP/classical-arabic/
+      branch: project-testing
+      path: 3_inception_export/clara_project_2021-11-02_1131.zip
 workflows:
   all:
     - convert
     - install
     - train
     - evaluate
-
 commands:
   - name: install
-    help: "Install classical arabic language model from file as package with entry point"
-    script: 
-      - "pip install -e lang/TODO"
+    help: Install classical arabic language model from file as package with entry
+      point
+    script:
+      - pip install -e lang/TODO
     deps:
-      - "lang/TODO"
-
+      - lang/TODO
   - name: convert
-    help: "Convert the data to spaCy's format"
-    # Make sure we specify the branch in the command string, so that the
-    # caching works correctly.
+    help: Convert the data to spaCy's format
     script:
-      - "mkdir -p corpus/"
-      # TODO - "python -m spacy convert assets/TODO/${vars.train_name}.conllu corpus/TODO/ --converter conllu --n-sents 10 --merge-subtokens"
-      # TODO - "mv corpus/TODO/${vars.train_name}.spacy corpus/TODO/train.spacy"
+      - mkdir -p corpus/
     deps:
-      - "assets/3_inception_export/clara_project_2021-11-02_1131.zip"
+      - assets/3_inception_export/clara_project_2021-11-02_1131.zip
     outputs:
-      - "corpus/clara/train.spacy"
-
+      - corpus/clara/train.spacy
   - name: train
-    help: "Train TODO"
+    help: Train TODO
     script:
-      - "spacy init fill-config configs/${vars.base_config}.cfg configs/config.cfg"
-      - "spacy train configs/config.cfg --output training"
+      - spacy init fill-config configs/${vars.base_config}.cfg configs/config.cfg
+      - spacy train configs/config.cfg --output training
     deps:
-      - "corpus/TODO/train.spacy"
-      - "configs/${vars.base_config}.cfg"
+      - corpus/TODO/train.spacy
+      - configs/${vars.base_config}.cfg
     outputs:
-      - "training/TODO/model-best"
-
+      - training/TODO/model-best
   - name: evaluate
-    help: "Evaluate on the test data and save the metrics"
+    help: Evaluate on the test data and save the metrics
     script:
-      - "python -m spacy evaluate ./training/model-best ./corpus/clara/test.spacy --output ./metrics/TODO.json --gpu-id ${vars.gpu}"
+      - python -m spacy evaluate ./training/model-best ./corpus/clara/test.spacy --output
+        ./metrics/TODO.json --gpu-id ${vars.gpu}
     deps:
-      - "training/model-best"
-      - "corpus/TODO/test.spacy"
+      - training/model-best
+      - corpus/TODO/test.spacy
     outputs:
-      - "metrics/TODO.json"
-
+      - metrics/TODO.json
   - name: clean
-    help: "Remove intermediate files"
+    help: Remove intermediate files
     script:
-      - "rm -rf training/*"
-      - "rm -rf metrics/*"
-      - "rm -rf corpus/*"
+      - rm -rf training/*
+      - rm -rf metrics/*
+      - rm -rf corpus/*
