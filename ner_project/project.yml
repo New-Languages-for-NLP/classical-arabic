@@ -14,11 +14,11 @@ vars:
 directories: ["assets", "corpus", "training", "metrics", "configs", "packages"]
 
 assets:
-  - dest: "assets/TODO"
+  - dest: "assets/3_inception_export"
     git:
       repo: "https://github.com/New-Languages-for-NLP/classical-arabic/"
       branch: "project-testing"
-      path: "3_inception_export/TODO"
+      path: "3_inception_export/clara_project_2021-11-02_1131.zip"
 
 workflows:
   all:
@@ -40,13 +40,13 @@ commands:
     # Make sure we specify the branch in the command string, so that the
     # caching works correctly.
     script:
-      # TODO - "mkdir -p corpus/TODO"
+      - "mkdir -p corpus/"
       # TODO - "python -m spacy convert assets/TODO/${vars.train_name}.conllu corpus/TODO/ --converter conllu --n-sents 10 --merge-subtokens"
       # TODO - "mv corpus/TODO/${vars.train_name}.spacy corpus/TODO/train.spacy"
     deps:
-      # TODO - "assets/${vars.treebank}/${vars.train_name}.conllu"
+      - "assets/3_inception_export/clara_project_2021-11-02_1131.zip"
     outputs:
-      # TODO - "corpus/${vars.treebank}/train.spacy"
+      - "corpus/clara/train.spacy"
 
   - name: train
     help: "Train TODO"
@@ -62,7 +62,7 @@ commands:
   - name: evaluate
     help: "Evaluate on the test data and save the metrics"
     script:
-      # TODO - "python -m spacy evaluate ./training/model-best ./corpus/${vars.treebank}/test.spacy --output ./metrics/TODO.json --gpu-id ${vars.gpu}"
+      - "python -m spacy evaluate ./training/model-best ./corpus/clara/test.spacy --output ./metrics/TODO.json --gpu-id ${vars.gpu}"
     deps:
       - "training/model-best"
       - "corpus/TODO/test.spacy"
