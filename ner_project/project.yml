@@ -1,7 +1,5 @@
-title: "Rraining pipeline for NER in classical arabic"
-description: "TODO"
-
-# Variables can be referenced across the project.yml using ${vars.var_name}
+title: Rraining pipeline for NER in classical arabic
+description: TODO
 vars:
   base_config: "base_config"
   lang: "classical arabic"
@@ -14,7 +12,7 @@ vars:
 directories: ["assets", "corpus", "training", "configs"]
 
 assets:
-  - dest: "assets/3_inception_export"
+  - dest: assets/3_inception_export
     git:
       repo: "https://github.com/New-Languages-for-NLP/classical-arabic/"
       branch: "project-testing"
@@ -42,11 +40,11 @@ commands:
     deps:
       - "../2_new_language_object/classical_arabic"
 
+
   - name: convert
-    help: "Convert the data to spaCy's format"
-    # Make sure we specify the branch in the command string, so that the
-    # caching works correctly.
+    help: Convert the data to spaCy's format
     script:
+
       - "mkdir -p corpus/ "
       - "unzip assets/3_inception_export/clara_project_2021-11-02_1131.zip -d corpus"
       - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL1/maroussia.bednarkiewicz.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL1/ --converter conll --n-sents 10 --merge-subtokens"
@@ -54,8 +52,9 @@ commands:
       - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL3/maroussia.bednarkiewicz.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-CL3/ --converter conll --n-sents 10 --merge-subtokens"
       - "python -m spacy convert corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-MUB-CL-NER.conllu/ik337.conll corpus/annotation/0597IbnJawzi.Mawducat.ShamAY0034138-MUB-CL-NER.conllu/ --converter conll --n-sents 10 --merge-subtokens"
       
+
     deps:
-      - "assets/3_inception_export/clara_project_2021-11-02_1131.zip"
+      - assets/3_inception_export/clara_project_2021-11-02_1131.zip
     outputs:
       - "corpus/clara/train.spacy"
 
@@ -83,4 +82,4 @@ commands:
       - "corpus/test.spacy"
       - "configs/config.cfg"
     outputs:
-      - "training/TODO/model-best"
+      - "training/model-best"
