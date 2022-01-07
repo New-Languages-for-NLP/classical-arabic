@@ -30,4 +30,10 @@ Ed. ʿAbd al-Raḥman Muḥammad ʿUthmān.
 Medina: Al-Maktabah al-salafiyyah, 1966-8.
 
 ### Notes:
+None
 
+## 0597IbnJawzi.Mawducat.ShamAY0034138-ara1-CL
+
+This is the 'cleaned' version of 0597IbnJawzi.Mawducat.ShamAY0034138-ara1-OR.
+The cleaning was performed with cleaning_openiti.py [see the codes and jupyter notebook in this folder].
+All the elements that did not pertain to the text were removed, including page numbers and metadata.
