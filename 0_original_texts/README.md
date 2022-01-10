@@ -8,13 +8,14 @@ Lorenz Nigst, Maxim Romanov, Sarah Bowen Savant, Masoumeh Seydi, & Peter Verkind
 OpenITI: a Machine-Readable Corpus of Islamicate Texts (2021.1.4) [Data set]. 
 Zenodo. https://doi.org/10.5281/zenodo.4513723
 
-Filenames ending with *CL* are the cleaned files.
+###Filenames ending with *CL* are the cleaned files.
 The cleaning was performed with cleaning_openiti.py [see the codes and jupyter notebook in this folder].
 All the elements that did not pertain to the text were removed, including page numbers and metadata.
+
 C1, C2, and C3 correspond to parts 1, 2 and 3 of the text 0597IbnJawzi.Mawducat.ShamAY0034138-ara1-CL.
-*C1* has 2605 lines, 115211 tokens (words)
-*C2* has 2119 lines, 83410 tokens (words)
-*C3* has 1977 lines, 75386 tokens (words)
+- *C1* has 2605 lines, 115211 tokens (words)
+- *C2* has 2119 lines, 83410 tokens (words)
+- *C3* has 1977 lines, 75386 tokens (words)
 
 # File content
 
