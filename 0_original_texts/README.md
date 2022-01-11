@@ -22,18 +22,18 @@ C1, C2, and C3 correspond to parts 1, 2 and 3 of the text 0597IbnJawzi.Mawducat.
 ## 0597IbnJawzi.Mawducat.ShamAY0034138-ara1-OR
 
 ### Bibliographical information:
-Ibn al-Jawzī, Kitāb al-mawudūʿāt min al-aḥādīth al-marfūʿāt. 
+Ibn al-Jawzī, Kitāb al-mawdūʿāt min al-aḥādīth al-marfūʿāt. 
 Ed. [and commented ?] Nūr al-Dīn ibn Shukrī ibn ʻAlī Būyā Jīlār, 
 Riyad, Aḍwāʾ al-Salaf, 1997.
 
 ### Notes:
-This edition contains an introduction with reference to the manuscripts on which the edition is based. 
+The print edition contains an excellent introduction by the editor with reference to the manuscripts on which the edition is based. 
 It also seems to have references to the folien in the margins.
 
 ## 0597IbnJawzi.Mawducat.Shamela0000882-ara1-OR
 
 ### Bibliographical information:
-Ibn al-Jawzī, Kitāb al-mawudūʿāt. 
+Ibn al-Jawzī, Kitāb al-mawdūʿāt. 
 Ed. ʿAbd al-Raḥman Muḥammad ʿUthmān. 
 Medina: Al-Maktabah al-salafiyyah, 1966-8.
 
