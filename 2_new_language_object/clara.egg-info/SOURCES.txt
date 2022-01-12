@@ -1,0 +1,6 @@
+setup.py
+clara.egg-info/PKG-INFO
+clara.egg-info/SOURCES.txt
+clara.egg-info/dependency_links.txt
+clara.egg-info/entry_points.txt
+clara.egg-info/top_level.txt
