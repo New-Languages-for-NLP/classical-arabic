@@ -1,5 +1,8 @@
 
 title: "New Language Project for Part-of-speech Tagging, Lemmatizer and Features from CoNLL-U data"
+authors: 
+- "Irene Kirchner"
+- "Maroussia Bednarkiewicz"
 description: "This project template lets you train a part-of-speech tagger, lemmatizer and features from a [Universal Dependencies-style](https://universaldependencies.org/) corpus. It takes care of downloading the treebank, converting it to spaCy's format and training and evaluating the model. Just make sure to adjust the `lang` and treebank settings in the variables below."
 
 # Variables can be referenced across the project.yml using ${vars.var_name}
