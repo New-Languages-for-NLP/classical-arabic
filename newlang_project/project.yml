@@ -1,4 +1,7 @@
 title: "Train new language model from cadet and inception data"
+authors:
+- "Irene Kirchner"
+- "Maroussia Bednarkiewicz"
 description: "This project template lets you train a part-of-speech tagger, morphologizer and dependency parser from your cadet and inception data."
   
 # Adapted from https://github.com/explosion/projects/blob/v3/pipelines/tagger_parser_ud/project.yml
@@ -14,7 +17,7 @@ vars:
   random_state: 11
   package_name: "Classical Arabic"
   package_version: "0.0.0"
-  wandb: false 
+  wandb: true 
   gpu: 0
 
 # These are the directories that the project needs. The project CLI will make
