@@ -9,7 +9,8 @@ description: "This project template lets you train a part-of-speech tagger, morp
 # Variables can be referenced across the project.yml using ${vars.var_name}
 
 vars:
-  config: "config.cfg"
+  config: "transformer_config.cfg"
+  #config: "config.cfg"
   lang: "clara"
   treebank: "classical-arabic"
   test_size: 0.2
