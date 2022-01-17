@@ -7,7 +7,7 @@ from typing import Optional, List, Dict, Tuple
 from thinc.api import Model
 import spacy 
 
-class Classical_arabicLemmatizer(Lemmatizer):
+class ClassicalArabicLemmatizer(Lemmatizer):
     def __init__(
         self,
         vocab: Vocab,
