@@ -13,10 +13,10 @@ from spacy.tokens import Doc
 from typing import Optional
 from thinc.api import Model
 import srsly
-from .lemmatizer import Classical_arabicLemmatizer
+from .lemmatizer import ClassicalArabicLemmatizer
 
 # https://nightly.spacy.io/api/language#defaults
-class Classical_arabicDefaults(Language.Defaults):
+class ClassicalArabicDefaults(Language.Defaults):
     stop_words = STOP_WORDS
     tokenizer_exceptions = TOKENIZER_EXCEPTIONS
     prefixes = TOKENIZER_PREFIXES
@@ -28,13 +28,13 @@ class Classical_arabicDefaults(Language.Defaults):
     writing_system = {"direction": "rtl", "has_case": False, "has_letters": True}
 
 @spacy.registry.languages("clara") #https://nightly.spacy.io/api/top-level#registry
-class Classical_arabic(Language):
+class ClassicalArabic(Language):
     lang = "clara"
-    Defaults = Classical_arabicDefaults
+    Defaults = ClassicalArabicDefaults
 
     #custom on init
 
-@Classical_arabic.factory(
+@ClassicalArabic.factory(
     "lemmatizer",
     assigns=["token.lemma"],
     default_config={"model": None, "mode": "lookup", "overwrite": False},
@@ -43,7 +43,7 @@ class Classical_arabic(Language):
 def make_lemmatizer(
     nlp: Language, model: Optional[Model], name: str, mode: str, overwrite: bool
 ):
-    return Classical_arabicLemmatizer(nlp.vocab, model, name, mode=mode, overwrite=overwrite)
+    return ClassicalArabicLemmatizer(nlp.vocab, model, name, mode=mode, overwrite=overwrite)
 
 #Add locations of lookups data to the registry
 @spacy.registry.lookups("clara")
@@ -57,4 +57,4 @@ def do_registration():
         result[key] = str(lookup)
     return result
 
-__all__ = ["Classical_arabic"]
+__all__ = ["ClassicalArabic"]
