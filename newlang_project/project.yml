@@ -17,7 +17,7 @@ vars:
   n_sents: 10
   random_state: 11
   package_name: "ClassicalArabic"
-  package_version: "0.0.0"
+  package_version: "0.0.2"
   wandb: true 
   gpu: 0
 
