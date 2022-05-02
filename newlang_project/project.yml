@@ -60,10 +60,9 @@ commands:
   - name: convert
     help: "Convert the data to spaCy's format"
     script: 
-    # Replace '3_inception_export' with '3_inception_ner_snd' as input folder
-      - "python scripts/convert.py assets/${vars.treebank}/3_inception_ner_snd ${vars.n_sents} ${vars.lang}"
+      - "python scripts/convert.py assets/${vars.treebank}/3_inception_export ${vars.n_sents} ${vars.lang}"
     deps:
-      - "assets/${vars.treebank}/3_inception_ner_snd"
+      - "assets/${vars.treebank}/3_inception_export"
     
   - name: split
     help: "Split the data into train, validation, and test"
