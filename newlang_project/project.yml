@@ -60,9 +60,9 @@ commands:
   - name: convert
     help: "Convert the data to spaCy's format"
     script: 
-      - "python scripts/convert.py assets/${vars.treebank}/3_training_snd ${vars.n_sents} ${vars.lang}"
+      - "python scripts/convert.py assets/${vars.treebank}/3_training_ner ${vars.n_sents} ${vars.lang}"
     deps:
-      - "assets/${vars.treebank}/3_training_snd"
+      - "assets/${vars.treebank}/3_training_ner"
     
   - name: split
     help: "Split the data into train, validation, and test"
