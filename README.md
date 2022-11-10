@@ -33,7 +33,7 @@ The data for this project will be released as soon as our research has been publ
 Please refer to the References and Citation section.
 
 ## Dataset Curators
-Irene Kirchner
+Irene Kirchner & 
 Maroussia Bednarkiewicz
 
 ## References
