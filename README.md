@@ -1,6 +1,6 @@
 # 🌱 Project Language: Classical Arabic or clara
 
-This repository is the central point for documentation and data for our project. You will find here several folders where we  store the data and code used as we create data and train models for Classical Arabic. 
+This repository is the central point for documentation and data for our project. Here, you will find several folders where we  store the data and code used as we create data and train models for Classical Arabic. 
 
 `0_original_texts`: This folder contains the original text files for the project. This is a record of the original state of the texts before any pre-processing and annotation.
 
