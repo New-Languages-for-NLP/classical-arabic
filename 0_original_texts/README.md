@@ -9,4 +9,4 @@ Zenodo. https://doi.org/10.5281/zenodo.6808108
 
 # Filenames
 The cleaning was performed with readiti.py from https://github.com/Maroussia/readiti.
-All the elements that did not pertain to the text were removed, including punctuations, page numbers and metadata.
+All the elements that did not pertain to the text were removed, including page numbers, punctuations, and metadata.
