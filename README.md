@@ -21,7 +21,7 @@ This project aims at adding Classical Arabic to spaCy NLP pipeline by training a
 Our training data are extracted from the open-source and open-access corpus OpenITI [see References at the bottom of this page].
 
 ## Curation Rationale
-We have chosen to work with OpenITI texts because the corpus is open-source, open-access and schoalrly curated.
+We have chosen to work with OpenITI texts because the corpus is open-source, open-access and scholarly curated.
 We selected texts related to our current research and took care of gathering diverse data to avoid over-fitting our models.
 
 NB See the sections on Mission Statement and Collection Development Policy in Jo and Gebru, ["Lessons from Archives"](https://arxiv.org/abs/1912.10389)  
@@ -44,7 +44,3 @@ https://inception-project.github.io/
 `OpenITI`
 Nigst, Lorenz, Romanov, Maxim, Savant, Sarah Bowen, Seydi, Masoumeh, & Verkinderen, Peter. (2022). OpenITI: a Machine-Readable Corpus of Islamicate Texts (2022.1.6) [Data set]. Zenodo.
 https://doi.org/10.5281/zenodo.6808108
-
-
-## Citation Information
-- How to cite this project. 
