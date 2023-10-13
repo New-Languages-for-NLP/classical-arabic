@@ -1,5 +1,2 @@
-This folder contains links and information about the model we are training.
-
-The trained models will be published on the Zenodo platform.
-
-As soon as the fine-tuning of our first model will be done, we will share the model here.
+We are currently addressing inconsistencies in our training data.
+The trained models will be published here and on the Zenodo platform when this process has concluded and the quality of our data has been ensured.
