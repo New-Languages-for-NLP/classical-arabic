@@ -4,7 +4,7 @@ import srsly
 import typer
 import warnings
 from pathlib import Path
-import subprocess
+import subprocesss
 import shutil
 
 import spacy
